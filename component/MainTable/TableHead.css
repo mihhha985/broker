@@ -1,0 +1,32 @@
+.caption__box{
+  min-width: 120px;
+  position: relative;
+}
+
+.caption__text{
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
+  cursor: pointer;
+  opacity: .8;
+}
+
+.caption__text:hover{
+  opacity: 1;
+}
+
+.caption__box > .help__text{
+  position: absolute;
+  top: 80%;
+  left:20%;
+  width: 180px;
+  height: auto;
+  background: aqua;
+  color: blueviolet;
+  padding: 8px;
+  border-radius: 3px;
+  border: 1px solid blueviolet;
+  opacity: .9;
+  display: none;
+  z-index: 100;
+}
