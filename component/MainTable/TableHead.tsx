@@ -22,10 +22,10 @@ const TableHeadForm = () => {
     const target = e.currentTarget;
     const type = e.type;
   
-    if(type === 'mouseenter' && target.className === 'caption__text') 
+    if(type === 'mouseenter' && target.className === 'caption__span') 
       target.nextElementSibling.style.display = 'block';
       
-    if(type === 'mouseleave' && target.className === 'caption__text')
+    if(type === 'mouseleave' && target.className === 'caption__span')
       target.nextElementSibling.style.display = 'none';
 
   }
@@ -37,74 +37,41 @@ const TableHeadForm = () => {
         <div
           onMouseEnter={mouseOverHandler}
           onMouseLeave={mouseOverHandler} 
-          className='caption__text'>
-          <text>Наименование</text>
+          className='caption__span'>
+          <span>Наименование</span>
           <BsPatchQuestion />
         </div>
-        <div className='help__text'>Инструменты за которыми будем следить</div>
+        <div className='help__span'>Инструменты за которыми будем следить</div>
       </StyledTableCell>
       <StyledTableCell className='caption__box'>
         <div
           onMouseEnter={mouseOverHandler}
           onMouseLeave={mouseOverHandler} 
-          className='caption__text'>
-          <text>Абривиатура</text>
+          className='caption__span'>
+          <span>доходность(% годовых)</span>
           <BsPatchQuestion />
         </div>
-        <div className='help__text'>что смотрим</div>
+        <div className='help__span'>JОжидаемая доходность инструмента</div>
       </StyledTableCell>
       <StyledTableCell className='caption__box'>
-        <div
-          onMouseEnter={mouseOverHandler}
-          onMouseLeave={mouseOverHandler} 
-          className='caption__text'>
-          <text>Биржа</text>
-          <BsPatchQuestion />
+        <div className='caption__span'>
+          <span>текущая цена спреда</span>
         </div>
-        <div className='help__text'>биржа</div>
       </StyledTableCell>
       <StyledTableCell className='caption__box'>
-        <div
-          onMouseEnter={mouseOverHandler}
-          onMouseLeave={mouseOverHandler} 
-          className='caption__text'>
-          <text>прибыль/%</text>
-          <BsPatchQuestion />
+        <div className='caption__span'>
+          <span>текущая цена А</span>
         </div>
-        <div className='help__text'>процент прибыли</div>
       </StyledTableCell>
       <StyledTableCell className='caption__box'>
-        <div
-          onMouseEnter={mouseOverHandler}
-          onMouseLeave={mouseOverHandler} 
-          className='caption__text'>
-          <text>баланс/руб</text>
-          <BsPatchQuestion />
+        <div className='caption__span'>
+          <span>текущая цена В</span>
         </div>
-        <div className='help__text'>ползунок с данными какой у тебя капитал на какой бирже</div>
       </StyledTableCell>
-      <StyledTableCell>ГО</StyledTableCell>
-      <StyledTableCell className='caption__box'>
-        <div
-          onMouseEnter={mouseOverHandler}
-          onMouseLeave={mouseOverHandler} 
-          className='caption__text'>
-          <text>депозит/руб</text>
-          <BsPatchQuestion />
-        </div>
-        <div className='help__text'>ползунок на депозит</div>
-      </StyledTableCell>
-      <StyledTableCell className='caption__box'>
-        <div
-          onMouseEnter={mouseOverHandler}
-          onMouseLeave={mouseOverHandler} 
-          className='caption__text'>
-          <text>площпдка</text>
-          <BsPatchQuestion />
-        </div>
-        <div className='help__text'>ползунок на площадке</div>
-      </StyledTableCell>
-      <StyledTableCell>Фандинг</StyledTableCell>
+      <StyledTableCell>дата экспирации</StyledTableCell>
+      <StyledTableCell>косты по активу А</StyledTableCell>
+      <StyledTableCell>косты по активу B</StyledTableCell>
+      <StyledTableCell>сумарный актив</StyledTableCell>
     </TableRow>
   </TableHead>   
   );

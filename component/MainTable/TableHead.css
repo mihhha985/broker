@@ -3,7 +3,7 @@
   position: relative;
 }
 
-.caption__text{
+.caption__span{
   display: flex;
   align-items: center;
   column-gap: 5px;
@@ -11,11 +11,11 @@
   opacity: .8;
 }
 
-.caption__text:hover{
+.caption__span:hover{
   opacity: 1;
 }
 
-.caption__box > .help__text{
+.caption__box > .help__span{
   position: absolute;
   top: 80%;
   left:20%;

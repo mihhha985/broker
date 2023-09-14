@@ -42,6 +42,7 @@ export default function Home() {
     }
 
     getData();
+    console.log(data);
   }, []);
 
   return (
@@ -52,17 +53,17 @@ export default function Home() {
           <TableBody>
             {data?.map((row:DataType) => (
               <StyledTableRow 
-                onClick={() => router.push(`/tools/${row.name}`)}
+                onClick={() => router.push(`/tools/${row.name}?exchange=${row.exchange}`)}
                 key={row.name}>
-                <TableCell component="th" scope="row">{row.title}</TableCell>
-                <TableCell  >{row.name}</TableCell>
-                <TableCell  >{row.exchange}</TableCell>
-                <TableCell  >8%</TableCell>
-                <TableCell  >7000</TableCell>
-                <TableCell  >{row.source}</TableCell>
-                <TableCell  >6897р.</TableCell>
-                <TableCell  >7778р.</TableCell>
-                <TableCell  >68%</TableCell>
+                <TableCell component="th" scope="row">{row.exchange}:{row.name}</TableCell>
+                <TableCell>180%</TableCell>
+                <TableCell>1.0026</TableCell>
+                <TableCell>192.1</TableCell>
+                <TableCell>191.07</TableCell>
+                <TableCell>21.07.2023</TableCell>
+                <TableCell>0.06%</TableCell>
+                <TableCell>0.1%</TableCell>
+                <TableCell>0.16</TableCell>
               </StyledTableRow>
             ))}
           </TableBody>
