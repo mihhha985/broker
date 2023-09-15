@@ -1,0 +1,40 @@
+{
+  "chart":{
+    "layout": { 
+      "textColor": "#fff", 
+      "background": {"type":"solid", "color": "#03a9f4"},
+      "fontFamily": "'Roboto', sans-serif"
+    },
+    "grid": { 
+      "vertLines": { "color": "blue"},
+      "horzLines": { "color": "blue" }
+    },
+    "rightPriceScale": { "borderColor": "blue" },
+    "timeScale": { 
+      "borderColor": "blue", 
+      "barSpacing": 10,
+      "timeVisible": true,
+      "ticksVisible": true,
+      "secondsVisible":false 
+    },
+    "crosshair": {
+      "mode": 0,
+      "vertLine": {
+        "color":"#fff",
+        "labelBackgroundColor":"#fff"
+      },
+      "horzLine": {
+        "color": "#fff",
+        "labelBackgroundColor":"#fff"
+      }
+    }
+  },
+  "candlestickSeries":{
+    "upColor": "#fff", 
+    "downColor": "#7b1fa2",
+    "borderVisible": true, 
+    "borderColor": "#fff",
+    "wickUpColor": "#fff", 
+    "wickDownColor": "#7b1fa2"
+  }
+}

@@ -1,54 +1,32 @@
 // TradingViewWidget.jsx
 "use client"
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
+import { createChart } from 'lightweight-charts';
 import Link from 'next/link';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import { createChart } from 'lightweight-charts';
+import config from '@/config/lightweight-charts.json';
 import axios from 'axios';
-
-type DataType = {
-  close_price: string,
-  high_price: string,
-  low_price: string,
-  open_price: string,
-  time_frame: number,
-  timestamp: number,
-  tool_market: string,
-  tool_name: string,
-  volume: string
-}
-
-type FormatDataType = {
-  time: string,
-  open: number,
-  high: number,
-  low:  number,
-  close: number,
-}
-
-type TimeframeType = 60 | 300 | 900 | 3600 | 86400;
+import { TimeframeType, FormatDataType, DataType } from '@/types/lightweight-charts';
+const now:number = Math.ceil(Date.now() / 1000);
 
 export default function TradingViewWidget({ params }: { params: { alias: string } }) {
   const containerRef = useRef() as React.MutableRefObject<HTMLDivElement>;
   const [timeFrame, setTimeFrame] = useState<TimeframeType>(3600);
-  //const time_frame = 60; //300; //900; //3600; //86400;
-  //const timestamp__lte = 1693267200;
-  //const timestamp__gte = 1627776000;
+  const now:number = Math.ceil(Date.now() / 1000);
+  const dategap:number = useMemo(() => {
+    let result;
+    result = now - 60 * 60 * 24 * 30;
+    if(timeFrame === 86400) result = now - 60 * 60 * 24 * 30 * 12;
+    return result;
+  },[timeFrame]);
+
   useEffect(() => {
-    async function getData() { 
-      const now:number = Math.ceil(new Date().getTime() / 1000);
-      const dategap:number = now - 60 * 60 * 24 * 30;
-      /*
-      if(timeFrame === 60) dategap = 60 * 60;
-      if(timeFrame === 300) dategap = 60 * 60 * 24;
-      if(timeFrame === 900) dategap = 60 * 60 * 24 * 2;
-      if(timeFrame === 3600) dategap = 60 * 60 * 24 * 7;
-      if(timeFrame === 86400) dategap = 60 * 60 * 24 * 30;
-      */
+    async function getData(now:number, dategap:number):Promise<void> {
+
       const response = await axios.get(process.env.serverUrl + '/sources/alor/market_data', {
         params: {
           symbol__name:params.alias,
@@ -60,7 +38,7 @@ export default function TradingViewWidget({ params }: { params: { alias: string 
       
       if(response.status === 200){
        
-        const formatArray = response.data.results
+        const formatArray:FormatDataType[] = response.data.results
         .sort((a:DataType, b:DataType) => a.timestamp - b.timestamp)
         .map((item:DataType) => {
           return {
@@ -73,15 +51,11 @@ export default function TradingViewWidget({ params }: { params: { alias: string 
         });
 
         
-        //console.log('now: ' + new Date(now * 1000).toISOString().slice(0, 10));
-        //console.log('dategap: ' + new Date(dategap * 1000).toISOString().slice(0, 10));
+        const chart = createChart(containerRef.current, config.chart as any);
+        const candlestickSeries = chart.addCandlestickSeries(config.candlestickSeries);
         candlestickSeries.setData(formatArray);
 
         setInterval(async () => {
-          const now:number = Math.ceil(Date.now() / 1000);
-          const dategap:number = now - 60 * 60 * 24 * 30;
-          console.log('date: ' + new Date().toISOString());
-          console.log(formatArray[formatArray.length - 1]);
           const response = await axios.get(process.env.serverUrl + '/sources/alor/market_data', {
             params: {
               symbol__name:params.alias,
@@ -107,22 +81,12 @@ export default function TradingViewWidget({ params }: { params: { alias: string 
 
             candlestickSeries.update(formatArray[formatArray.length - 1]);  
           }
-        }, 1000 * 60);
 
-      
-        chart.timeScale().fitContent();
+        }, 1000 * 60);
       }
     }
     
-    
-    const chartOptions = { layout: { textColor: '#fff', background: {type:'solid', color: '#03a9f4'} } };
-    const chart = createChart(containerRef.current, chartOptions as any);
-    const candlestickSeries = chart.addCandlestickSeries({
-      upColor: '#fff', downColor: '#7b1fa2', borderVisible: true, borderColor: '#fff',
-      wickUpColor: '#fff', wickDownColor: '#7b1fa2',
-    });
-    
-    getData();
+    getData(now, dategap);
   },[timeFrame]);
 
   const changeTimeFrame = (time:TimeframeType):void => {
