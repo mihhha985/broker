@@ -1,8 +1,9 @@
 {
   "chart":{
-    "layout": { 
-      "textColor": "#fff", 
-      "background": {"type":"solid", "color": "#03a9f4"},
+    "layout": {
+      "width": "100%", 
+      "textColor": "#03a9f4", 
+      "background": {"type":"solid", "color": "#fff"},
       "fontFamily": "'Roboto', sans-serif"
     },
     "grid": { 
@@ -20,21 +21,20 @@
     "crosshair": {
       "mode": 0,
       "vertLine": {
-        "color":"#fff",
-        "labelBackgroundColor":"#fff"
+        "color":"#03a9f4",
+        "labelBackgroundColor":"#03a9f4"
       },
       "horzLine": {
-        "color": "#fff",
-        "labelBackgroundColor":"#fff"
+        "color": "#03a9f4",
+        "labelBackgroundColor":"#03a9f4"
       }
     }
   },
   "candlestickSeries":{
-    "upColor": "#fff", 
-    "downColor": "#7b1fa2",
-    "borderVisible": true, 
-    "borderColor": "#fff",
-    "wickUpColor": "#fff", 
+    "upColor": "#4caf50", 
+    "downColor": "#ef5350",
+    "borderVisible": false, 
+    "wickUpColor": "#ef5350", 
     "wickDownColor": "#7b1fa2"
   }
 }

@@ -1,0 +1,70 @@
+.glassQuotes{
+  min-width: 360px;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+}
+
+.glassQuotes__header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #7b1fa2;
+  padding: 1rem;
+}
+
+.glassQuotes__footer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #7b1fa2;
+  padding: 1rem;
+}
+
+.glassQuotes__body__buy{
+  color: #fff;
+  background-color: rgba(76, 175, 80, 0.8);
+}
+
+.glassQuotes__body__sell{
+  color: #fff;
+  background-color: rgba(239, 83, 80, 0.8);
+}
+
+.glassQuotes__body__item{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+}
+
+.glassQuotes__body__buy > .glassQuotes__body__item{
+  padding: 0 1rem;
+  border-bottom: 1px solid rgba(76, 175, 80, 0.4);
+}
+
+.glassQuotes__body__sell > .glassQuotes__body__item{
+  padding: 0 1rem;
+  border-bottom: 1px solid rgba(239, 83, 80, 0.4);
+}
+
+.glassQuotes__body__spread{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 80px;
+  color: #7b1fa2;
+}
+
+.glassQuotes__body__spread > p{
+  margin: 0;
+}
+
+.glassQuotes__body__spread > h6{
+  margin-top: 0.1rem;
+  margin-bottom: 0;
+  border-bottom: 1px dotted #7b1fa2;
+}
