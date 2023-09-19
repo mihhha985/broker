@@ -1,18 +1,18 @@
 {
-  "chart":{
+  "light":{
     "layout": {
-      "width": "100%", 
-      "textColor": "#03a9f4", 
+      "autoSize": true,
+      "textColor": "rgb(30, 35, 41)", 
       "background": {"type":"solid", "color": "#fff"},
       "fontFamily": "'Roboto', sans-serif"
     },
     "grid": { 
-      "vertLines": { "color": "blue"},
-      "horzLines": { "color": "blue" }
+      "vertLines": { "color": "rgb(238, 240, 242)"},
+      "horzLines": { "color": "rgb(238, 240, 242)" }
     },
-    "rightPriceScale": { "borderColor": "blue" },
+    "rightPriceScale": { "borderColor": "rgb(238, 240, 242)" },
     "timeScale": { 
-      "borderColor": "blue", 
+      "borderColor": "rgb(238, 240, 242)", 
       "barSpacing": 10,
       "timeVisible": true,
       "ticksVisible": true,
@@ -21,12 +21,43 @@
     "crosshair": {
       "mode": 0,
       "vertLine": {
-        "color":"#03a9f4",
-        "labelBackgroundColor":"#03a9f4"
+        "color":"rgb(30, 35, 41)",
+        "labelBackgroundColor":"rgb(30, 35, 41)"
       },
       "horzLine": {
-        "color": "#03a9f4",
-        "labelBackgroundColor":"#03a9f4"
+        "color": "rgb(30, 35, 41)",
+        "labelBackgroundColor":"rgb(30, 35, 41)"
+      }
+    }
+  },
+  "dark":{
+    "layout": {
+      "width": "100%", 
+      "textColor": "rgb(234, 236, 239)", 
+      "background": {"type":"solid", "color": "rgb(22, 26, 30)"},
+      "fontFamily": "'Roboto', sans-serif"
+    },
+    "grid": { 
+      "vertLines": { "color": "rgba(234, 236, 239, 0.1)"},
+      "horzLines": { "color": "rgba(234, 236, 239, 0.1)" }
+    },
+    "rightPriceScale": { "borderColor": "rgba(234, 236, 239, 0.1)" },
+    "timeScale": { 
+      "borderColor": "rgba(234, 236, 239, 0.1)", 
+      "barSpacing": 10,
+      "timeVisible": true,
+      "ticksVisible": true,
+      "secondsVisible":false 
+    },
+    "crosshair": {
+      "mode": 0,
+      "vertLine": {
+        "color":"rgb(234, 236, 239)",
+        "labelBackgroundColor":"rgb(234, 236, 239)"
+      },
+      "horzLine": {
+        "color": "rgb(234, 236, 239)",
+        "labelBackgroundColor":"rgb(234, 236, 239)"
       }
     }
   },
@@ -35,6 +66,6 @@
     "downColor": "#ef5350",
     "borderVisible": false, 
     "wickUpColor": "#ef5350", 
-    "wickDownColor": "#7b1fa2"
+    "wickDownColor": "#4caf50"
   }
 }
